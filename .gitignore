@@ -1,0 +1,9 @@
+.*
+!.gitignore
+!.*lint*
+!.*config
+
+*.bkp
+*.log
+*.sublime*
+node_modules

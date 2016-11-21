@@ -1,0 +1,82 @@
+$collie-config ?= {
+	col-wrapper-name: "col",
+	row-wrapper-name: "row-w"
+};
+
+collie($num = "", $type = "float", $gutter = 10px, $ib-font-size = 16px) {
+	$col-w = $collie-config.col-wrapper-name;
+	$row-w = $collie-config.row-wrapper-name;
+
+	if ($num == "reset") {
+		margin-top: 0;
+
+		> .{$col-w} {
+			margin-top: $gutter;
+			display: block;
+			float: none;
+			width: auto;
+
+			&:first-child {
+				margin-top: 0;
+			}
+		}
+	} else {
+		if ($num == "") {
+			$num = 2;
+		}
+
+		$tl = {
+			"i": "inline-block",
+			"f": "float",
+			"t": "table"
+		};
+		margin-left: $gutter * -1;
+
+		if ($type == $tl.i) {
+			font-size: 0;
+			margin-top: $gutter * -1;
+		}
+
+		if ($type == $tl.f) {
+			&:after {
+				clear: both;
+				content: "";
+				display: table;
+			}
+		}
+
+		if ($type == $tl.t) {
+			> .{$row-w} {
+				display: table;
+				width: 100%;
+
+				> .{$col-w} {
+					display: table-cell;
+					padding-left: $gutter;
+					width: percentage(1/$num);
+				}
+			}
+		} else {
+			> .{$col-w} {
+				box-sizing: border-box;
+				margin-left: $gutter;
+				width: collie-width(percentage(1/$num), $gutter);
+
+				if ($type == $tl.i) {
+					display: inline-block;
+					font-size: $ib-font-size;
+					margin-top: $gutter;
+					vertical-align: top;
+				}
+
+				if ($type == $tl.f) {
+					float: left;
+				}
+			}
+		}
+	}
+}
+
+collie-width($val, $gutter = 10px) {
+	unquote("calc(" + $val + " - " + $gutter + ")");
+}

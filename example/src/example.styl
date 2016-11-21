@@ -1,0 +1,94 @@
+@require "collie";
+@require "config";
+
+.example-default {
+	collie();
+}
+
+.example-3col {
+	collie(3);
+}
+
+.example-ib {
+	collie($type: "inline-block");
+}
+
+.example-tb-auto {
+	collie(4, $type: "table");
+
+	> .row-w > .col:first-child {
+		width: auto;
+	}
+}
+
+.example-custom-sizes {
+	collie();
+
+	.module-a-wrapper {
+		width: collie-width(percentage(1/5));
+	}
+
+	.module-b-wrapper {
+		width: collie-width(percentage(3.5/5));
+	}
+
+	.module-c-wrapper {
+		width: collie-width(percentage(0.5/5));
+	}
+}
+
+.example-custom-sizes-gutter {
+	$g = 20px;
+	collie($gutter: $g);
+
+	.module-a-wrapper {
+		width: collie-width(percentage(1/5), $g);
+	}
+
+	.module-b-wrapper {
+		width: collie-width(percentage(3.5/5), $g);
+	}
+
+	.module-c-wrapper {
+		width: collie-width(percentage(0.5/5), $g);
+	}
+}
+
+.example-max-width {
+	collie();
+
+	@media (max-width: $breakpoints.mobile-max) {
+		collie("reset");
+	}
+}
+
+.example-min-width {
+	@media (max-width: $breakpoints.mobile-max) {
+		.col {
+			margin-top: 10px;
+
+			&:first-child {
+				margin-top: 0;
+			}
+		}
+	}
+
+	@media (min-width: $breakpoints.tablet-min) {
+		collie();
+	}
+}
+
+.example-ib-responsive {
+	collie(4, $type: "inline-block");
+
+	@media (max-width: $breakpoints.mobile-max) {
+		> .col {
+			width: collie-width(percentage(1/2));
+		}
+	}
+}
+
+.example-ib .example-tb-auto ._proto-box,
+.example-default .example-custom-sizes ._proto-box {
+	background-color: #888;
+}

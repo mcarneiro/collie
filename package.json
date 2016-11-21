@@ -1,0 +1,31 @@
+{
+  "name": "collie",
+  "version": "0.1.0",
+  "description": "Mixins to create base column module (with mixed box modelling techniques)",
+  "main": "src/collie.styl",
+  "config": {
+    "output_style": "--compress"
+  },
+  "scripts": {
+    "test": "stylint src/** --config .stylintrc",
+    "build": "stylus src/** $npm_package_config_output_style --out dist",
+    "build:example": "stylus example/src --out example/css -I src",
+    "watch": "npm run build -- --watch",
+    "watch:example": "npm run build:example -- --watch"
+  },
+  "keywords": [
+    "box",
+    "modelling",
+    "css",
+    "columns",
+    "grid"
+  ],
+  "author": "Marcelo Miranda Carneiro <mcarneiro@gmail.com>",
+  "license": "ISC",
+  "dependencies": {
+    "stylus": "^0.54.5"
+  },
+  "devDependencies": {
+    "stylint": "^1.5.7"
+  }
+}
