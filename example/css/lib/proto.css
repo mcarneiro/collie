@@ -1,0 +1,14 @@
+._proto-box {
+  box-sizing: border-box;
+  padding: 10px;
+  background: #ccc;
+  font-size: 16px;
+  font-family: sans-serif;
+}
+._proto-text-discreet {
+  font-size: 12px;
+}
+._proto-text-highlight {
+  font-size: 19px;
+  font-weight: 700;
+}

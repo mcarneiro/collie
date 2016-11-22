@@ -1,0 +1,68 @@
+collie($num = "", $type = "float", $gutter = 10px, $w-name = "col-w", $ib-font-size = 16px) {
+	if ($num == "reset") {
+		margin-top: 0;
+
+		.{$w-name} {
+			margin-top: $gutter;
+			display: block;
+			float: none;
+			width: auto;
+
+			&:first-child {
+				margin-top: 0;
+			}
+		}
+	} else {
+		if ($num == "") {
+			$num = 2;
+		}
+
+		$tl = {
+			"i": "inline-block",
+			"f": "float",
+			"t": "table"
+		};
+		margin-left: $gutter * -1;
+
+		if ($type == $tl.i) {
+			font-size: 0;
+			margin-top: $gutter * -1;
+		}
+
+		if ($type == $tl.f) {
+			&:after {
+				clear: both;
+				content: "";
+				display: table;
+			}
+		}
+
+		if ($type == $tl.t) {
+			.row-w {
+				display: table;
+				width: 100%;
+			}
+		}
+
+		.{$w-name} {
+			box-sizing: border-box;
+			padding-left: $gutter;
+			width: percentage(1/$num);
+
+			if ($type == $tl.i) {
+				display: inline-block;
+				font-size: $ib-font-size;
+				margin-top: $gutter;
+				vertical-align: top;
+			}
+
+			if ($type == $tl.f) {
+				float: left;
+			}
+
+			if ($type == $tl.t) {
+				display: table-cell;
+			}
+		}
+	}
+}

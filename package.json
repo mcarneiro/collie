@@ -20,6 +20,9 @@
     "columns",
     "grid"
   ],
+  "files": [
+    "src/collie.styl"
+  ],
   "author": "Marcelo Miranda Carneiro <mcarneiro@gmail.com>",
   "license": "ISC",
   "dependencies": {
