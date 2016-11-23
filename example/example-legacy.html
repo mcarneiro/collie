@@ -1,0 +1,151 @@
+<!DOCTYPE html>
+<html lang="pt-BR" class="no-js no-touch -pre-home {{rootClass}}">
+<head>
+	<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+	<title> Collie Example </title>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+	<link rel="stylesheet" href="css/lib/markdown.css">
+	<link rel="stylesheet" href="css/lib/proto.css">
+	<link rel="stylesheet" href="css/collie-legacy-example.css">
+</head>
+<body>
+	<h1>[WIP] Collie - column module (IE8+ version)</h1>
+
+<p>The idea of this module is to create a clean base box modelling of columns with percentage and fixed gutter for you. No setup like column number or column width is needed globally.</p>
+
+<p>This was built for projects that doesn&#39;t need (or have) a gridsystem structure.</p>
+
+<blockquote>
+<p>You&#39;ll see some extra elements, such as <code>.col-w</code> that&#39;s is needed because of IE8. This is the &quot;old school&quot; way of box modelling. I&#39;ll create another module focusing in IE9+ and the markup will get a bit cleaner, also with <code>display:flex</code> options.</p>
+
+<p>Notice that <code>.col-w</code> would just get style of size and margin (top/bottom) and hardly you&#39;d place a background there. On the examples below, consider that the holder of your module is the <code>._proto-box</code> element. <code>.row</code> and <code>.col-w</code> are just wrappers.</p>
+</blockquote>
+
+<h2>Box modelling techniques</h2>
+
+<p>Default configuration using <code>row()</code>. By default it has 2 columns, 10px gutter and uses <code>float</code> technique.</p>
+
+<div class="example-default">
+	<div class="col-w">
+		<div class="_proto-box">1</div>
+	</div>
+	<div class="col-w">
+		<div class="_proto-box">2</div>
+	</div>
+</div>
+
+<p>Another example using 3 columns.</p>
+
+<div class="example-3col">
+	<div class="col-w">
+		<div class="_proto-box">1</div>
+	</div>
+	<div class="col-w">
+		<div class="_proto-box">2</div>
+	</div>
+	<div class="col-w">
+		<div class="_proto-box">3</div>
+	</div>
+</div>
+
+<p>An example using 4 elements with <code>inline-block</code> technique:</p>
+
+<div class="example-ib">
+	<div class="col-w">
+		<div class="_proto-box">1 is <br> higher</div>
+	</div>
+	<div class="col-w">
+		<div class="_proto-box">2</div>
+	</div>
+	<div class="col-w">
+		<div class="_proto-box">3</div>
+	</div>
+	<div class="col-w">
+		<div class="_proto-box">4</div>
+	</div>
+</div>
+
+<blockquote>
+<p>The <code>inline-block</code> technique is good for multiple lines like product lists. By default it has a <code>margin-top: $gutter</code> and a <code>vertical-align: top</code>. It uses the negative margin of <code>$gutter</code> on the holder <code>.row</code>. It also apply a <code>font-size: 0;</code> on <code>.row</code> element to avoid the space between elements.</p>
+</blockquote>
+
+<p>An example using <code>table</code> technique, useful when an &quot;auto&quot; column is needed:</p>
+
+<div class="example-tb-auto">
+	<div class="row-w">
+		<div class="col-w">
+			<div class="_proto-box">1 is <br> higher</div>
+		</div>
+		<div class="col-w">
+			<div class="_proto-box">2</div>
+		</div>
+	</div>
+</div>
+
+<blockquote>
+<p>Notice that a <code>.row-w</code> element is needed to fix IE8 100% issue with <code>display:table</code> and negative margin.</p>
+</blockquote>
+
+<h2>Playing with multiple column sizes</h2>
+
+<p>The idea of this module is to create a base structure box modelling with multiple old-school techniques (that will work with IE8+ and modern browsers).</p>
+
+<p>All exceptions can be achieved by overwriting the rules in child elements:</p>
+
+<div class="example-custom-sizes">
+	<div class="col-w module-a-wrapper">
+		<div class="_proto-box">1 is <br> higher</div>
+	</div>
+	<div class="col-w module-b-wrapper">
+		<div class="_proto-box">2</div>
+	</div>
+	<div class="col-w module-c-wrapper">
+		<div class="_proto-box">3</div>
+	</div>
+</div>
+
+<h2>Responsive behaviour</h2>
+
+<p>The responsive behaviour, breakpoints and when to use them is up to you. You can use <code>min-height</code> to apply the modules and have all col-w elements stacked in mobile. If you are working with <code>max-width</code> you can use the <code>row-reset()</code> function, that will make the elements blocked and full with a margin-top of <code>$gutter</code>.</p>
+
+<p>Example with <code>max-width</code>:</p>
+
+<div class="example-reset">
+	<div class="col-w">
+		<div class="_proto-box">1 is <br> higher</div>
+	</div>
+	<div class="col-w">
+		<div class="_proto-box">2</div>
+	</div>
+</div>
+
+<p>Example with <code>min-width</code>:</p>
+
+<div class="example-min-width">
+	<div class="col-w">
+		<div class="_proto-box">1 is <br> higher</div>
+	</div>
+	<div class="col-w">
+		<div class="_proto-box">2</div>
+	</div>
+</div>
+
+<p>An example using 4 columns with <code>inline-block</code> technique and responsive behaviour:</p>
+
+<div class="example-ib-responsive">
+	<div class="col-w">
+		<div class="_proto-box">1 is <br> higher</div>
+	</div>
+	<div class="col-w">
+		<div class="_proto-box">2</div>
+	</div>
+	<div class="col-w">
+		<div class="_proto-box">3</div>
+	</div>
+	<div class="col-w">
+		<div class="_proto-box">4</div>
+	</div>
+</div>
+</body>
+</html>

@@ -1,0 +1,74 @@
+@require "collie-legacy";
+@require "config";
+
+.example-default {
+	collie();
+	margin-bottom: 10px;
+}
+
+.example-3col {
+	collie(3);
+	margin-bottom: 10px;
+}
+
+.example-ib {
+	collie($type: "inline-block");
+}
+
+.example-tb-auto {
+	collie(4, $type: "table");
+
+	.col-w:first-child {
+			width: auto;
+	}
+}
+
+.example-custom-sizes {
+	collie();
+
+	.module-a-wrapper {
+		width: percentage(1/5);
+	}
+
+	.module-b-wrapper {
+		width: percentage(3.5/5);
+	}
+
+	.module-c-wrapper {
+		width: percentage(0.5/5);
+	}
+}
+
+.example-reset {
+	collie();
+
+	@media (max-width: $breakpoints.mobile-max) {
+		collie("reset");
+	}
+}
+
+.example-min-width {
+	@media (max-width: $breakpoints.mobile-max) {
+		.col-w {
+			margin-top: 10px;
+
+			&:first-child {
+				margin-top: 0;
+			}
+		}
+	}
+
+	@media (min-width: $breakpoints.tablet-min) {
+		collie();
+	}
+}
+
+.example-ib-responsive {
+	collie(4, $type: "inline-block");
+
+	@media (max-width: $breakpoints.mobile-max) {
+		.col-w {
+			width: percentage(1/2);
+		}
+	}
+}

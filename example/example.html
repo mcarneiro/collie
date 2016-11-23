@@ -12,40 +12,14 @@
 <body>
 <h1>Collie - column module (IE9+)</h1>
 
-<p>This page contains example using collie for IE9+. It has one element less compared to collie legacy as it's possible to use <code>calc()</code>.</p>
-
-<h2>Box modelling techniques</h2>
-
-<p>Default configuration using <code>collie()</code>. By default it has 2 columns, 10px gutter and uses <code>float</code> technique.</p>
+<p>Float 2 columns (default):</p>
 
 <div class="example-default">
 	<div class="col _proto-box">1</div>
 	<div class="col _proto-box">2</div>
 </div>
 
-<pre><code>.example-default {
-  collie();
-}</code></pre>
-
-<p>The default mixin output will be:</p>
-
-<pre><code>.example-default {
-  margin-left: -10px;
-}
-
-.example-default:after {
-  clear: both;
-  content: "";
-  display: table;
-}
-
-.example-default > .col {
-  box-sizing: border-box;
-  margin-left: 10px;
-  width: calc(50% - 10px);
-}</code></pre>
-
-<p>Using 3 columns.</p>
+<p>Float 3 columns:</p>
 
 <div class="example-3col">
 	<div class="col _proto-box">1</div>
@@ -53,11 +27,7 @@
 	<div class="col _proto-box">3</div>
 </div>
 
-<pre><code>.example-3col {
-  collie(3);
-} </code></pre>
-
-<p>An example using 4 elements with <code>inline-block</code> technique:</p>
+<p>Inline-block 2 columns, 4 elements:</p>
 
 <div class="example-ib">
 	<div class="col _proto-box">1 is <br> higher</div>
@@ -66,31 +36,7 @@
 	<div class="col _proto-box">4</div>
 </div>
 
-<pre><code>.example-3col {
-  collie($type: "inline-block");
-} </code></pre>
-
-<blockquote>
-<p>The <code>inline-block</code> technique is good for multiple lines like product lists. By default it has <code>vertical-align: top</code> and a <code>font-size: 0;</code> on the main holder to avoid the space between elements.
-</blockquote>
-
-<p>The mixin output code is:</p>
-<pre><code>.example-ib {
-  margin-left: -10px;
-  font-size: 0;
-  margin-top: -10px;
-}
-.example-ib > .col {
-  box-sizing: border-box;
-  margin-left: 10px;
-  width: calc(50% - 10px);
-  display: inline-block;
-  font-size: 16px;
-  margin-top: 10px;
-  vertical-align: top;
-}</code></pre>
-
-<p>An example using <code>table</code> technique, useful when an &quot;auto&quot; column is needed:</p>
+<p>Display table 2 columns:</p>
 
 <div class="example-tb-auto">
 	<div class="row-w">
@@ -103,48 +49,7 @@
 	</div>
 </div>
 
-<pre><code>.example-tb-auto {
-  collie(4, $type: "table");
-  margin-bottom: 10px;
-
-  > .row-w > .col:first-child {
-    width: auto;
-  }
-}</code></pre>
-
-<blockquote>
-<p>Notice that a <code>.row-w</code> element is needed as the table wrapper and <code>.col</code> will also be a wrapper to give the gutter space between each column.</p>
-</blockquote>
-
-<p>The mixin output is:</p>
-
-<pre><code>.example-tb-auto {
-  margin-left: -10px;
-}
-
-.example-tb-auto > .row-w {
-  display: table;
-  width: 100%;
-}
-
-.example-tb-auto > .row-w > .col {
-  box-sizing: border-box;
-  display: table-cell;
-  padding-left: 10px;
-  width: 25%;
-}
-
-.example-tb-auto > .row-w > .col:first-child {
-  width: auto;
-}</code></pre>
-
-<blockquote>
-	<p>It's important to notice that the inheritance of the display table technique is tighter than others. To override <code>display</code> property in <code>.col</code> element, for example, you would need to use the selector <code>.example-tb-auto > .row-w > .col { display: block; }</code></p>
-</blockquote>
-
-<h2>Playing with multiple column sizes</h2>
-
-<p>As this module just create the base box-modelling is up to you to define the column sizes of each element just by overriding the rules:</p>
+<p>3 Columns, multiple sizes:</p>
 
 <div class="example-custom-sizes">
 	<div class="col module-a-wrapper _proto-box">1 is <br> higher</div>
@@ -152,19 +57,7 @@
 	<div class="col module-c-wrapper _proto-box">3</div>
 </div>
 
-<pre><code>.example-custom-sizes {
-  collie();
-
-  .module-a-wrapper { width: collie-width(percentage(1/5)); }
-  .module-b-wrapper { width: collie-width(percentage(3.5/5)); }
-  .module-c-wrapper { width: collie-width(percentage(0.5/5)); }
-}</code></pre>
-
-<blockquote>
-	<p><code>collie-width</code> function will help on creating the <code>calc</code> value. The output for <code>collie-width(percentage(1/5)</code> would be <code>calc(20% - 10px)</code> as 10px is the default gutter.</p>
-</blockquote>
-
-<p>An example with different gutter:</p>
+<p>3 columns, multiple sizes and 20px gutter:</p>
 
 <div class="example-custom-sizes-gutter">
 	<div class="col module-a-wrapper _proto-box">1 is <br> higher</div>
@@ -172,58 +65,21 @@
 	<div class="col module-c-wrapper _proto-box">3</div>
 </div>
 
-<pre><code>.example-custom-sizes-gutter {
-  $g = 20px;
-  collie($gutter: $g);
-
-  .module-a-wrapper { width: collie-width(percentage(1/5), $g); }
-  .module-b-wrapper { width: collie-width(percentage(3.5/5), $g); }
-  .module-c-wrapper { width: collie-width(percentage(0.5/5), $g); }
-}</code></pre>
-
-<h2>Responsive behaviour</h2>
-
-<p>The responsive behaviour, breakpoints and when to use them is up to you. You can use <code>min-height</code> to apply the modules and have all col elements stacked in mobile. If you are working with <code>max-width</code> you can call <code>collie("reset")</code>, that will make the elements blocked and full with a margin-top of <code>$gutter</code>.</p>
-
-<p>Example with <code>max-width</code>:</p>
+<p>Max-width:</p>
 
 <div class="example-max-width">
 	<div class="col _proto-box">1 is <br> higher</div>
 	<div class="col _proto-box">2</div>
 </div>
 
-<pre><code>.example-max-width {
-  collie();
-
-  @media (max-width: $breakpoints.mobile-max) {
-    collie("reset");
-  }
-}</code></pre>
-
-<p>Example with <code>min-width</code>:</p>
+<p>Min-width:</p>
 
 <div class="example-min-width">
 	<div class="col _proto-box">1 is <br> higher</div>
 	<div class="col _proto-box">2</div>
 </div>
 
-<pre><code>.example-min-width {
-  @media (max-width: $breakpoints.mobile-max) {
-    .col {
-      margin-top: 10px;
-
-      &:first-child {
-        margin-top: 0;
-      }
-    }
-  }
-
-  @media (min-width: $breakpoints.tablet-min) {
-    collie();
-  }
-}</code></pre>
-
-<p>An example using 4 columns with <code>inline-block</code> technique and responsive behaviour:</p>
+<p>4 columns with 2 columns on mobile:</p>
 
 <div class="example-ib-responsive">
 	<div class="col _proto-box">1 is <br> higher</div>
@@ -232,19 +88,7 @@
 	<div class="col _proto-box">4</div>
 </div>
 
-<pre><code>.example-ib-responsive {
-  collie(4, $type: "inline-block");
-
-  @media (max-width: $breakpoints.mobile-max) {
-    > .col {
-      width: collie-width(percentage(1/2));
-    }
-  }
-}</code></pre>
-
-<h2>Collie inside another Collie</h2>
-
-<p>All modules uses <code>&gt;</code> in all classes. It'll make it safe to place one module inside another. Below, there's the multi-size column (dark gray) inside the default column:</p>
+<p>Collie inside collie (float + float):</p>
 
 <div class="example-default">
 	<div class="col">
@@ -257,7 +101,7 @@
 	<div class="col _proto-box">2</div>
 </div>
 
-<p>Also if they are using different techniques. Below there'a a display table technique (dark gray) inside inline-block tecnique:</p>
+<p>Collie inside collie (display inline-block + table):</p>
 
 <div class="example-ib">
 	<div class="col">

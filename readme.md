@@ -276,9 +276,12 @@ The `first-child` of column will output:
 
 You can set the gutter using the second parameter: `collie-width(50%, 20px)`.
 
+## Examples
+
+Learn by doing: check and play with the examples on this codepen: http://codepen.io/mcarneiro/pen/GNjoXa?editors=1100
+
 ## TODO
 
-* Create git pages with example;
 * Try to find a way to re-use the gutter on next calls;
 * SASS version;
 * Publish "legacy" (ie8+) version;
@@ -289,7 +292,7 @@ Every help is welcomed, you can test and open issues or create pull request.
 
 Clone the project and:
 
-* Run `npm install` and `npm run watch:example` to compile example/test files;
+* Run `npm install` and `npm run watch` to compile example/test files;
 * Follow the present code style;
 * Keep it lint free;
 * Update the docs and example pages with relevant information;

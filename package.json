@@ -8,10 +8,8 @@
   },
   "scripts": {
     "test": "stylint src/** --config .stylintrc",
-    "build": "stylus src/** $npm_package_config_output_style --out dist",
-    "build:example": "stylus example/src --out example/css -I src",
-    "watch": "npm run build -- --watch",
-    "watch:example": "npm run build:example -- --watch"
+    "build": "stylus example/src/example.styl example/src/example-legacy.styl --out example/css -I src",
+    "watch": "npm run build -- --watch"
   },
   "keywords": [
     "box",
