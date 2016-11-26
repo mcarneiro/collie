@@ -300,3 +300,5 @@ Clone the project and:
 * Follow the present code style;
 * Keep it lint free;
 * Update the docs and example pages with relevant information;
+
+_\*Border collie icon was made by [Freepik](http://www.freepik.com) from [www.flaticon.com](http://www.flaticon.com) is licensed by [CC 3.0 BY](http://creativecommons.org/licenses/by/3.0/)_
