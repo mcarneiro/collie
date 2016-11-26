@@ -2,9 +2,9 @@
 
 `version 0.1.0-rc`
 
-![Collie](./assets/collie-logo.png)
+![Collie](./assets/collie-logo-icon.png)
 
-_A base box modelling to create columns layouts_
+_A base box modelling to create columns layouts._
 
 Sometimes you don't need a gridsystem framework to use columns layout.
 
