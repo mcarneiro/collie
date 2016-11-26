@@ -1,10 +1,14 @@
-# Collie - base box modelling to create columns layouts
+# Collie
 
 `version 0.1.0-rc`
 
+![Collie](./assets/collie-logo.png)
+
+_A base box modelling to create columns layouts_
+
 Sometimes you don't need a gridsystem framework to use columns layout.
 
-Collie is a mixin for stylus that will give you the base box modelling for this. It let you choose the box modelling technique (`float`, `inline-block` or `table`), the gutter value and the amount of columns.
+Collie is a simple mixin for stylus that will give you the base box modelling to do this. It let you choose the technique (`float`, `inline-block` or `table`), the gutter value and the amount of columns.
 
 It was born from the need of projects with multiple grids defined or no grid at all. Instead of creating a main amount of columns, gutter value, etc. You just use it as it is needed.
 

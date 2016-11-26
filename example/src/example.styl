@@ -14,10 +14,14 @@
 }
 
 .example-tb-auto {
-	collie(4, $type: "table");
+	collie($type: "table");
 
-	> .row-w > .col:first-child {
+	> .row-w > .col {
 		width: auto;
+
+		&:first-child {
+			width: 100px;
+		}
 	}
 }
 
