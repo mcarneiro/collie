@@ -2,7 +2,7 @@ collie($num = "", $type = $collie-data.type, $gutter = $collie-data.gutter, $ib-
 	if ($num == "reset") {
 		margin-top: 0;
 
-		> .{$col-wrapper-name} {
+		> {$col-wrapper-name} {
 			display: block;
 			float: none;
 			margin-top: $gutter;
@@ -39,11 +39,11 @@ collie($num = "", $type = $collie-data.type, $gutter = $collie-data.gutter, $ib-
 		}
 
 		if ($type == $tl.t) {
-			> .{$row-wrapper-name} {
+			> {$row-wrapper-name} {
 				display: table;
 				width: 100%;
 
-				> .{$col-wrapper-name} {
+				> {$col-wrapper-name} {
 					box-sizing: border-box;
 					display: table-cell;
 					padding-left: $gutter;
@@ -51,7 +51,7 @@ collie($num = "", $type = $collie-data.type, $gutter = $collie-data.gutter, $ib-
 				}
 			}
 		} else {
-			> .{$col-wrapper-name} {
+			> {$col-wrapper-name} {
 				margin-left: $gutter;
 				width: collie-width(percentage(1/$num), $gutter);
 
@@ -101,8 +101,8 @@ collie-reset($name = "") {
 }
 
 $collie-data = {
-	col-wrapper-name: "col",
-	row-wrapper-name: "row-w",
+	col-wrapper-name: ".col",
+	row-wrapper-name: ".row-w",
 	ib-font-size: 16px,
 	type: "float",
 	gutter: 10px

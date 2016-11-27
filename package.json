@@ -7,8 +7,8 @@
     "output_style": "--compress"
   },
   "scripts": {
-    "test": "node test/collie.js && npm run lint",
-    "lint": "stylint src/** --config .stylintrc",
+    "test": "npm run build && node test/collie.js && npm run lint",
+    "lint": "stylint --config .stylintrc",
     "build": "stylus example/src/example.styl example/src/example-legacy.styl --out example/css -I src",
     "watch": "npm run build -- --watch"
   },

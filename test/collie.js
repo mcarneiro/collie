@@ -11,6 +11,10 @@ function selector(name, index, parent) {
 	})[index || 0] || {};
 }
 
+function selectorExist(name, parent) {
+	return !!selector(name, parent).declarations;
+}
+
 function media(name, index) {
 	return rules.filter(function(val) {
 		return val.media && val.media.indexOf(name) >= 0;
@@ -175,9 +179,14 @@ isEqual(
 ///////////////////
 
 isEqual(
+	selectorExist('.example-global-params > .custom-col'),
+	true,
+	'Global params example should define custom col name');
+
+isEqual(
 	property('.example-global-params > .custom-col', 'margin-left'),
 	'20px',
-	'Global params example should have custom gutter by default (with custom col name)');
+	'Global params example should have custom gutter by default');
 
 isEqual(
 	property('.example-global-params > .custom-col', 'font-size'),
@@ -195,14 +204,24 @@ isEqual(
 	'Global params example should have custom type by default');
 
 isEqual(
+	selectorExist('.example-global-params-tb > .custom-row'),
+	true,
+	'Global params example should define custom row name');
+
+isEqual(
 	property('.example-global-params-tb > .custom-row', 'display'),
 	'table',
-	'Global params example should have custom type by default (with custom row name)');
+	'Global params example should have custom type by default');
+
+isEqual(
+	selectorExist('.example-global-params-reset > .col'),
+	true,
+	'Reseted global params example should have default col name');
 
 isEqual(
 	property('.example-global-params-reset > .col', 'float'),
 	'left',
-	'Reseted global params example should have type back to default configuration (with default col name)');
+	'Reseted global params example should have type back to default configuration');
 
 isEqual(
 	property('.example-global-params-reset > .col', 'margin-left'),

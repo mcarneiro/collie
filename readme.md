@@ -285,8 +285,8 @@ You can set the gutter using the second parameter: `collie-width(50%, 20px)`.
 You can set the default parameters to collie. Available values are:
 
 ```
-collie-set("col-wrapper-name", "custom-col");
-collie-set("row-wrapper-name", "custom-row"); // only used by table technique
+collie-set("col-wrapper-name", ".custom-col");
+collie-set("row-wrapper-name", ".custom-row"); // only used by table technique
 collie-set("ib-font-size", 12px); // only used by inline-block technique
 collie-set("type", "inline-block");
 collie-set("gutter", 20px);

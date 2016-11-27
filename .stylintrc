@@ -2,7 +2,7 @@
     "blocks": false,
     "brackets": "always",
     "colons": "always",
-    "colors": "always",
+    "colors": false,
     "commaSpace": "always",
     "commentSpace": "always",
     "cssLiteral": "never",
@@ -10,7 +10,9 @@
     "depthLimit": 5,
     "duplicates": false,
     "efficient": "always",
-    "exclude": [],
+    "exclude": [
+        "node_modules/**/*"
+    ],
     "extendPref": false,
     "globalDupe": false,
     "groupOutputByFile": true,
