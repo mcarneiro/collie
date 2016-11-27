@@ -96,3 +96,33 @@
 .example-default .example-custom-sizes ._proto-box {
 	background-color: #888;
 }
+
+// Defining global parameters
+
+collie-set("col-wrapper-name", "custom-col");
+collie-set("type", "inline-block");
+collie-set("gutter", 20px);
+collie-set("ib-font-size", 20px);
+
+.example-global-params {
+	collie();
+}
+
+collie-set("type", "table");
+collie-set("row-wrapper-name", "custom-row");
+.example-global-params-tb {
+	collie();
+}
+
+collie-reset();
+.example-global-params-reset {
+	collie();
+}
+
+.example-global-params-reset-ib {
+	collie($type: "inline-block");
+}
+
+.example-global-params-reset-tb {
+	collie($type: "table");
+}

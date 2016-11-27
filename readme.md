@@ -1,6 +1,6 @@
 # Collie
 
-`version 0.1.0-rc`
+`version 0.1.0-rc2`
 
 ![Collie](./assets/collie-logo-icon.png)
 
@@ -14,7 +14,7 @@ It was born from the need of projects with multiple grids defined or no grid at 
 
 ## Install
 
-1. Install collie: `npm install mcarneiro/collie#0.1.0-rc --save`;
+1. Install collie: `npm install mcarneiro/collie#0.1.0-rc2 --save`;
 2. Add it into your file `@require "node_modules/collie/src/collie";`;
 3. Call the mixin `collie()`;
 
@@ -280,13 +280,50 @@ The `first-child` of column will output:
 
 You can set the gutter using the second parameter: `collie-width(50%, 20px)`.
 
+## collie-set()
+
+You can set the default parameters to collie. Available values are:
+
+```
+collie-set("col-wrapper-name", "custom-col");
+collie-set("row-wrapper-name", "custom-row"); // only used by table technique
+collie-set("ib-font-size", 12px); // only used by inline-block technique
+collie-set("type", "inline-block");
+collie-set("gutter", 20px);
+```
+
+By doing this, when writing:
+
+```
+.example {
+  collie();
+}
+```
+
+The output will be:
+
+```
+.example {
+  margin-left: -20px;
+  font-size: 0;
+  margin-top: -20px;
+}
+.example > .custom-col {
+  margin-left: 20px;
+  width: calc(25% - 20px);
+  display: inline-block;
+  font-size: 12px;
+  margin-top: 20px;
+  vertical-align: top;
+}
+```
+
 ## Examples
 
 Learn by doing: check and play with the examples on this codepen: http://codepen.io/mcarneiro/pen/GNjoXa?editors=1100
 
 ## TODO
 
-* Try to find a way to re-use the gutter on next calls;
 * SASS version;
 * Publish "legacy" (ie8+) version;
 
@@ -296,9 +333,10 @@ Every help is welcomed, you can test and open issues or create pull request.
 
 Clone the project and:
 
-* Run `npm install` and `npm run watch` to compile example/test files;
+* Run `npm install` and `npm run watch` to compile example files;
+* Run `npm test` to run unit tests;
 * Follow the present code style;
-* Keep it lint free;
+* Keep it lint free and create the relevant unit tests;
 * Update the docs and example pages with relevant information;
 
 _\*Border collie icon was made by [Freepik](http://www.freepik.com) from [www.flaticon.com](http://www.flaticon.com) is licensed by [CC 3.0 BY](http://creativecommons.org/licenses/by/3.0/)_

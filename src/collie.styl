@@ -1,19 +1,11 @@
-$collie-config ?= {
-	col-wrapper-name: "col",
-	row-wrapper-name: "row-w"
-};
-
-collie($num = "", $type = "float", $gutter = 10px, $ib-font-size = 16px) {
-	$col-w = $collie-config.col-wrapper-name;
-	$row-w = $collie-config.row-wrapper-name;
-
+collie($num = "", $type = $collie-data.type, $gutter = $collie-data.gutter, $ib-font-size = $collie-data.ib-font-size, $col-wrapper-name = $collie-data.col-wrapper-name, $row-wrapper-name = $collie-data.row-wrapper-name ) {
 	if ($num == "reset") {
 		margin-top: 0;
 
-		> .{$col-w} {
-			margin-top: $gutter;
+		> .{$col-wrapper-name} {
 			display: block;
 			float: none;
+			margin-top: $gutter;
 			width: auto;
 
 			&:first-child {
@@ -30,6 +22,7 @@ collie($num = "", $type = "float", $gutter = 10px, $ib-font-size = 16px) {
 			"f": "float",
 			"t": "table"
 		};
+
 		margin-left: $gutter * -1;
 
 		if ($type == $tl.i) {
@@ -46,11 +39,11 @@ collie($num = "", $type = "float", $gutter = 10px, $ib-font-size = 16px) {
 		}
 
 		if ($type == $tl.t) {
-			> .{$row-w} {
+			> .{$row-wrapper-name} {
 				display: table;
 				width: 100%;
 
-				> .{$col-w} {
+				> .{$col-wrapper-name} {
 					box-sizing: border-box;
 					display: table-cell;
 					padding-left: $gutter;
@@ -58,7 +51,7 @@ collie($num = "", $type = "float", $gutter = 10px, $ib-font-size = 16px) {
 				}
 			}
 		} else {
-			> .{$col-w} {
+			> .{$col-wrapper-name} {
 				margin-left: $gutter;
 				width: collie-width(percentage(1/$num), $gutter);
 
@@ -77,6 +70,44 @@ collie($num = "", $type = "float", $gutter = 10px, $ib-font-size = 16px) {
 	}
 }
 
-collie-width($val, $gutter = 10px) {
-	unquote("calc(" + $val + " - " + $gutter + ")");
+collie-width($val, $gutter = $collie-data.gutter) {
+	"calc(%s - %s)" % ($val $gutter);
+}
+
+collie-set($name, $val, $default = false) {
+	if ($default) {
+		$collie-def-data[$name] = $val;
+	}
+
+	$collie-data[$name] = $val;
+}
+
+collie-get($name, $default = false) {
+	if ($default) {
+		return $collie-def-data[$name];
+	} else {
+		return $collie-data[$name];
+	}
+}
+
+collie-reset($name = "") {
+	if ($name == "") {
+		for $label in $collie-data {
+			collie-reset($label, collie-get($label), true);
+		}
+	} else {
+		$collie-data[$name] = $collie-def-data[$name];
+	}
+}
+
+$collie-data = {
+	col-wrapper-name: "col",
+	row-wrapper-name: "row-w",
+	ib-font-size: 16px,
+	type: "float",
+	gutter: 10px
+};
+$collie-def-data = {};
+for $label in $collie-data {
+	collie-set($label, collie-get($label), true);
 }
