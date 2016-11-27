@@ -40,6 +40,7 @@ will output to:
   display: table;
 }
 .my-holder > .col {
+  box-sizing: border-box;
   margin-left: 10px;
   width: calc(50% - 10px);
   float: left;
@@ -85,6 +86,7 @@ Changes in the output will be:
   display: table;
 }
 .my-holder > .col {
+  box-sizing: border-box;
   margin-left: 20px;
   width: calc(50% - 20px);
   float: left;
@@ -108,6 +110,7 @@ and it'll output:
   margin-top: -10px;
 }
 .my-holder > .col {
+  box-sizing: border-box;
   margin-left: 10px;
   width: calc(25% - 10px);
   display: inline-block;
@@ -140,6 +143,7 @@ It'll output:
   width: 100%;
 }
 .my-holder > .row-w > .col {
+  box-sizing: border-box;
   display: table-cell;
   padding-left: 10px;
   width: 50%;
@@ -316,6 +320,14 @@ The output will be:
   margin-top: 20px;
   vertical-align: top;
 }
+```
+
+## collie-get()
+
+Retrived the global setting, based on the variables listed on the last topic. Ex.:
+
+```
+collie-get("gutter"); // 10px
 ```
 
 ## Examples
