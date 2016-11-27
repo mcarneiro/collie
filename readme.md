@@ -15,8 +15,8 @@ It was born from the need of projects with multiple grids defined or no grid at 
 ## Install
 
 1. Install collie: `npm install mcarneiro/collie#0.1.0-rc2 --save`;
-2. Add it into your file `@require "node_modules/collie/src/collie";`;
-3. Call the mixin `collie()`;
+2. Add it into your file `@require "collie";`;
+3. Call the mixin `collie()` inside your element;
 
 ## collie()
 
